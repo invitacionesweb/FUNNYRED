@@ -229,10 +229,13 @@ Pero si querés sumar un mimo a esta nueva etapa, podés ver nuestra mesa de reg
   <p data-aos="fade-up" >Te esperamos</p>
   <H2 data-aos="fade-in">Cande y Lucho</H2>
  </div>
+
+ 
 <div class="audiodiv">
-  <audio id="myAudio" preload="none">
-      <source src="./photograph--sub-español.mp3" type="audio/mpeg">
-  </audio>
+  
+  <audio id="myAudio" preload="auto">
+  <source src="./photograph--sub-español.mp3" type="audio/mpeg">
+</audio>
   <div id="playPauseBtn" class="play">
       <img src="./figuras/notamusical.png" alt="Icono de música">
   </div>
@@ -261,6 +264,22 @@ Pero si querés sumar un mimo a esta nueva etapa, podés ver nuestra mesa de reg
       <script src="reproductor.js"></script>
       <script src="form.js"></script>
 
+
+          <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("myAudio");
+
+    // Escucha el primer scroll
+    const playOnScroll = () => {
+      audio.play().catch(e => {
+        console.warn("El navegador bloqueó la reproducción automática", e);
+      });
+      document.removeEventListener("scroll", playOnScroll); // Se ejecuta solo una vez
+    };
+
+    document.addEventListener("scroll", playOnScroll);
+  });
+</script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
